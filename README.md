@@ -1,12 +1,49 @@
-Architecture: This repository works whit a hexagonal architecture (ports and adapters).
+# Microservice Details API
 
-Domain layer:
+## This API provides the necessary product details to the frontend.
 
-Infrastructure layer:
+**Version:** 1.0.0
+**Technology Stack:** Go 1.24.2. Standard Library, mockery for testing.
+
+### Implemented Strategy
+
+This service assumes that the requested ID is shared between the product and its details. It uses CQRS (Command Query Responsibility Segregation) to separate read and write operations. The Repository Pattern is used to abstract data access logic, with in-memory Map and Slice data structures serving as the current data persistence layer.
+
+### Architecture
+
+This microservice follows a Hexagonal Architecture (also known as Ports and Adapters) to ensure a clear separation of concerns and make the application independent of external services.
+
+**Domain Layer:** This layer contains the core business logic and entities.
+
+**Application Layer (Services):** This layer contains the use cases and interfaces that define the input and output ports of the system.
+
+**Infrastructure Layer:** This layer holds the implementations of the output ports, such as the Details repository. This is also where you would add implementations for message queues, middlewares, and other external integrations.
 
 
 
+### How to Run
 
+To start the server, navigate to the cmd directory and run the following command: **go run main.go**. This will start the server on port 8080.
 
+Once the service is running, you can make a GET request to the /api/v1/details/ endpoint. The request must include a details-ID header with the ID of the product whose details you want to retrieve.
 
-Se asume que el detalle tiene el mismo ID que el producto.
+### Endpoints
+
+**/api/v1/details/**
+
+Method: GET
+Description: Retrieves product details by ID.
+Headers: details-ID (required)
+
+**/ping**
+
+Method: GET
+Description: A health check endpoint that returns "pong" to verify the microservice is running.
+
+### Future Enhancements
+
+**Communication with the Products Service:** A validation could be implemented to check if the product exists. This could be done by making a call to the products microservice using a pattern like the Circuit Breaker.
+
+**Caching:** A cache could be implemented to temporarily store requested resources, reducing the number of database queries.
+
+**Metrics (CPU, RAM, Requests per Second):** A metrics collection system, such as Prometheus, could be integrated to monitor the microservice's performance, including CPU usage, RAM, and requests per second.
