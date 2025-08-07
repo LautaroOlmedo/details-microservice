@@ -1,19 +1,21 @@
 package reader
 
 import (
+	"context"
 	domain "details-microservice/internal/domain/details"
-	"github.com/labstack/echo/v4"
 )
 
 type DetailsService interface {
-	GetByID(id uint64) (*domain.Details, error)
-}
-type Handler struct {
-	DetailsService DetailsService
+	GetByID(ctx context.Context, id string) (*domain.Details, error)
 }
 
-func (H *Handler) GetDetailsByID(c echo.Context) error {
-	//id := c.Param("id")
+// readerHandler depends on the interfaces, not concrete types.
+type ReaderHandler struct {
+	Details DetailsService
+}
 
-	return c.String(500, "Not implemented yet")
+func NewHandler(details DetailsService) *ReaderHandler {
+	return &ReaderHandler{
+		Details: details,
+	}
 }

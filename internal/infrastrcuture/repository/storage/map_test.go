@@ -1,53 +1,52 @@
 package storage
 
 import (
+	"context"
 	domain "details-microservice/internal/domain/details"
-	"errors"
+	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+	"time"
 )
 
-var detailsRepo *domain.MockStorageRepository
+var testRepo *Map
 
 func TestMain(m *testing.M) {
-	detailsRepo = &domain.MockStorageRepository{}
-	detailsRepo.On("GetByID", uint64(1)).Return(&domain.Details{ID: 1, Description: "Sample description"}, nil)
-	detailsRepo.On("GetByID", uint64(2)).Return(nil, NotFoundError)
+	testRepo = &Map{
+		detailsMap: map[string]domain.Details{
+			"550e8400-e29b-41d4-a716-446655440000": {
+				ID: "550e8400-e29b-41d4-a716-446655440000", Description: "Sample description", CreatedAt: time.Now(), UpdatedAt: time.Now(),
+			},
+		},
+	}
 	code := m.Run()
 	os.Exit(code)
 }
 
 func TestMap_GetByID(t *testing.T) {
-	type testCase struct {
-		name          string
-		id            uint64
-		expectedError error
-	}
+	t.Run("PASS - Should find detail by ID", func(t *testing.T) {
+		t.Parallel()
+		expectedID := "550e8400-e29b-41d4-a716-446655440000"
+		detail, err := testRepo.GetByID(context.Background(), expectedID)
 
-	testCases := []testCase{
-		{
-			name:          "PASS. Valid ID",
-			id:            1,
-			expectedError: nil,
-		},
-		{
-			name:          "ERROR. Not found ID",
-			id:            2,
-			expectedError: NotFoundError,
-		},
-	}
+		assert.NoError(t, err)
+		assert.NotNil(t, detail)
+		assert.Equal(t, expectedID, detail.ID)
+	})
 
-	for i := range testCases {
-		tc := testCases[i]
-		t.Run(tc.name, func(t *testing.T) {
-			t.Parallel()
-			detailsRepo.Mock.Test(t)
-			detailsService := domain.NewService(detailsRepo)
+	t.Run("PASS - Should return nil for non-existing ID", func(t *testing.T) {
+		t.Parallel()
+		nonExistentID := "non-existent-id"
+		detail, err := testRepo.GetByID(context.Background(), nonExistentID)
+		assert.NoError(t, err)
+		assert.Nil(t, detail)
+	})
 
-			_, err := detailsService.GetByID(tc.id)
-			if !errors.Is(tc.expectedError, err) {
-				t.Errorf("expected error %v, got %v", tc.expectedError, err)
-			}
-		})
-	}
+	t.Run("PASS - Should return nil for empty ID", func(t *testing.T) {
+		t.Parallel()
+		emptyID := ""
+		detail, err := testRepo.GetByID(context.Background(), emptyID)
+		assert.NoError(t, err)
+		assert.Nil(t, detail)
+	})
 }

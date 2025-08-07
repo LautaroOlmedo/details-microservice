@@ -1,13 +1,19 @@
 package details
 
+import (
+	"context"
+	domain "details-microservice/internal/domain/details"
+)
+
 //go:generate mockery --name=StorageRepository --output=details --inpackage
 type StorageRepository interface {
-	GetByID(id uint64) (*Details, error)
+	GetByID(ctx context.Context, id string) (*domain.Details, error)
 }
 
-type ProductService interface {
-	ValidateProduct(id uint64) (uint64, error)
-}
+//	type ProductService interface {
+//		GetByID(ctx context.Context, id uint) (*domain.Details, error)
+//	}
+
 type Service struct {
 	StorageRepository StorageRepository
 }

@@ -1,16 +1,22 @@
 package storage
 
-import "time"
+import (
+	"details-microservice/configuration"
+	domain "details-microservice/internal/domain/details"
+	"time"
+)
 
 type Map struct {
-	detailsMap map[uint64]Details
+	config     *configuration.Configuration
+	detailsMap map[string]domain.Details
 }
 
-func NewMapRepository() *Map {
+func NewMapRepository(config *configuration.Configuration) *Map {
 	return &Map{
-		detailsMap: map[uint64]Details{
-			1: {ID: 1, Description: "Sample description", CreatedAt: time.Now(), UpdatedAt: time.Now()},
-			2: {ID: 2, Description: "Another description", CreatedAt: time.Now(), UpdatedAt: time.Now()},
+		config: config,
+		detailsMap: map[string]domain.Details{
+			"550e8400-e29b-41d4-a716-446655440000": {ID: "550e8400-e29b-41d4-a716-446655440000", Description: "Sample description", CreatedAt: time.Now(), UpdatedAt: time.Now()},
+			"660e8400-e29b-41d4-a716-446655440111": {ID: "660e8400-e29b-41d4-a716-446655440111", Description: "Another description", CreatedAt: time.Now(), UpdatedAt: time.Now()},
 		},
 	}
 }
