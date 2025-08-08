@@ -9,10 +9,10 @@ import (
 )
 
 func (h *ReaderHandler) HandlerGetDetailsByID(w http.ResponseWriter, r *http.Request) {
-	detailsID := r.Header.Get("details-ID")
+	detailsID := r.Header.Get("Details-ID")
 	if detailsID == "" {
 		w.WriteHeader(http.StatusBadRequest)
-		_, err := w.Write([]byte("Header details-ID is required"))
+		_, err := w.Write([]byte("Header Details-ID is required"))
 		if err != nil {
 			return
 		}

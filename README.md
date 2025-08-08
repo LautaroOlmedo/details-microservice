@@ -41,11 +41,7 @@ curl -L -X GET 'http://localhost:8080/api/v1/details' \
 -H 'Details-ID: 550e8400-e29b-41d4-a716-446655440000'
 ```
 
-
-### 4. High-Level Architecture
-
-
-### 5. API Endpoint Design
+### 4. API Endpoint Design
 
 We assume that all incoming request contain a detail identifier in the Details-ID header.
 
@@ -73,7 +69,7 @@ Response Code Errors
 500 Internal Server Error
 ```
 
-### 6. Next Iteration & Disccussion Points
+### 5. Next Iteration & Disccussion Points
 
 **Communication with the Products Service:** A validation could be implemented to check if the product exists. This could be done by making a call to the products microservice using a pattern like the Circuit Breaker.
 
