@@ -8,7 +8,7 @@
 
 ### Implemented Strategy
 
-This service assumes that the requested ID is shared between the product and its details. It uses CQRS (Command Query Responsibility Segregation) to separate read and write operations. The Repository Pattern is used to abstract data access logic, with in-memory Map and Slice data structures serving as the current data persistence layer.
+This service assumes that the requested ID is shared between the product and its details. It uses CQRS (Command Query Responsibility Segregation) to separate read and write operations. The Repository Pattern is used to abstract data access logic, with in-memory Map and Slice data structures serving as the current data persistence layer. Use injection dependency to decouple the service implementation and the repository implementation
 
 ### Architecture
 
