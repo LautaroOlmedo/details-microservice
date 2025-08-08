@@ -12,8 +12,6 @@
 * Make (optional, for running commands)
 
 
-
-
 **Technology Stack:** Go 1.24.2. Standard Library, mockery for testing.
 
 ### Architecture
@@ -27,12 +25,19 @@ This microservice follows a Hexagonal Architecture (also known as Ports and Adap
 **Infrastructure Layer:** This layer holds the implementations of the output ports, such as the Details repository. This is also where you would add implementations for message queues, middlewares, and other external integrations.
 
 
-### Implemented Strategy
+### 1. Business Logic
+The core of the system revolves around obtaining product data. This indicates that the system will have many requests, with a large number of users consuming product details.
 
-This service assumes that the requested ID is shared between the product and its details. It uses CQRS (Command Query Responsibility Segregation) to separate read and write operations. The Repository Pattern is used to abstract data access logic, with in-memory Map and Slice data structures serving as the current data persistence layer. Use injection dependency to decouple the service implementation and the repository implementation
+### 2. Requirements
 
+#### Non-Functional Requeriments
+* Details: Product details must be obtainable.
 
-### Calling endpoints
+#### Functional Requeriments
+* The solution must be able to scale to **millions request per x hour**.
+* The aapplication must be **optimized for reads**.
+
+### 3. Calling endpoints
 
 **Get Details by ID**
 ```
@@ -42,40 +47,10 @@ curl -L -X GET 'http://localhost:8080/api/v1/details' \
 ![details-endpoint.png](details-endpoint.png)
 
 
-### High-Level Architecture
-+-----------------------+
-|    External Clients   |
-+-----------------------+
-          |
-          v
-+-----------------------+
-|   HTTP Server (Mux)   |
-+-----------------------+
-          |
-          v
-+-----------------------+
-|   REST Handlers       |
-+-----------------------+
-          |
-          v
-+-----------------------+
-|   Application Layer   |
-|   (Services)          |
-+-----------------------+
-          |
-          v
-+-----------------------+
-|   Domain Layer        |
-|   (Entities, Logic)   |
-+-----------------------+
-          |
-          v
-+-----------------------+
-| Infrastructure Layer  |
-| (Repositories, etc.)  |
-+-----------------------+
+### 4. High-Level Architecture
 
-### API Endpoint Design
+
+### 5. API Endpoint Design
 
 We assume that all incoming request contain a detail identifier in the Details-ID header.
 
@@ -103,7 +78,7 @@ Response Code Errors
 500 Internal Server Error
 ```
 
-### Next Iteration & Disccussion Points
+### 6. Next Iteration & Disccussion Points
 
 **Communication with the Products Service:** A validation could be implemented to check if the product exists. This could be done by making a call to the products microservice using a pattern like the Circuit Breaker.
 
@@ -111,7 +86,7 @@ Response Code Errors
 
 **Metrics (CPU, RAM, Requests per Second):** A metrics collection system, such as Prometheus, could be integrated to monitor the microservice's performance, including CPU usage, RAM, and requests per second.
 
-**CQRS**: 
+**IA Integration**: A MCP Server implementation can be use to 
 
 ### Author
 Lautaro Olmedo
