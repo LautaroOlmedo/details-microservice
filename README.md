@@ -3,6 +3,7 @@
 ## This API provides the necessary product details to the frontend.
 
 **Version:** 1.0.0
+
 **Technology Stack:** Go 1.24.2. Standard Library, mockery for testing.
 
 ### Implemented Strategy

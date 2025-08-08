@@ -5,6 +5,7 @@ import (
 	domain "details-microservice/internal/domain/details"
 )
 
+//go:generate mockery --name=DetailsService --output=details --inpackage
 type DetailsService interface {
 	GetByID(ctx context.Context, id string) (*domain.Details, error)
 }
