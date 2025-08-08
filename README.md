@@ -38,13 +38,14 @@ We assume that all incoming request contain a detail identifier in the Details-I
  * Details-ID: "550e8400-e29b-41d4-a716-446655440000"
 
 * Success Response
-  
-{
+
+```{
   "ID": "550e8400-e29b-41d4-a716-446655440000",
   "Description": "Sample description",
   "CreatedAt": "2025-08-08T09:25:31.095446-03:00",
   "UpdatedAt": "2025-08-08T09:25:31.095446-03:00"
 }
+```
 
 * Response Code Errors
 200 Ok
