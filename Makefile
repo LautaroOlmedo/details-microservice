@@ -10,19 +10,19 @@ build:
 	@echo "Build complete. Executable: $(BUILD_DIR)/$(APP_NAME)"
 
 
-# Comando para ejecutar la aplicación
+
 run: build
 	@echo "Running $(APP_NAME)..."
 	@$(BUILD_DIR)/$(APP_NAME)
 
 
-# Comando para ejecutar las pruebas unitarias
+
 test:
 	@echo "Running tests..."
 	@go test -v ./...
 
 
-# Comando para limpiar los artefactos de la construcción
+
 clean:
 	@echo "Cleaning build artifacts..."
 	@rm -rf $(BUILD_DIR)

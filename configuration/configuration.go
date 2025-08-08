@@ -7,12 +7,7 @@ import (
 )
 
 type Server struct {
-	DOMAIN string
-	PORT   string
-}
-
-type DATABASE struct {
-	// set database or cache connection parameters
+	PORT string
 }
 
 type Configuration struct {
@@ -26,8 +21,7 @@ func Load(file string) (*Configuration, error) {
 	}
 	return &Configuration{
 		SERVER: Server{
-			DOMAIN: os.Getenv("SERVER_DOMAIN"),
-			PORT:   os.Getenv("SERVER_PORT"),
+			PORT: os.Getenv("SERVER_PORT"),
 		},
 	}, nil
 }

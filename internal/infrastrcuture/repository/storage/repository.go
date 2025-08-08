@@ -36,3 +36,8 @@ func NewSliceRepository(config *configuration.Configuration) *Slice {
 	}
 
 }
+
+// This would be a possible implementation of a distributed cache
+//type RedisStorage struct {
+//	*redisclient
+//}

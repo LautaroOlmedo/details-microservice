@@ -7,7 +7,6 @@ import (
 )
 
 var (
-	InvalidIDError          = errors.New("invalid product ID")
 	InvalidDescriptionError = errors.New("invalid description")
 )
 
@@ -19,6 +18,7 @@ type Details struct {
 	// other fields can be added as needed
 }
 
+// Factory patter for a possible detail creation implementation
 func NewDetails(description string) (Details, error) {
 	if description == "" || len(description) > 255 || len(description) < 5 {
 		return Details{}, InvalidDescriptionError

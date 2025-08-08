@@ -10,8 +10,9 @@ type StorageRepository interface {
 	GetByID(ctx context.Context, id string) (*domain.Details, error)
 }
 
+// If we need to communicate with the product service here would define the interface with their methods to implement.
 //	type ProductService interface {
-//		GetByID(ctx context.Context, id uint) (*domain.Details, error)
+//		GetByID(ctx context.Context, id uint) (*domain.Product, error)
 //	}
 
 type Service struct {

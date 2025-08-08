@@ -4,15 +4,11 @@
 
 **Version:** 1.0.0
 
-### How to Run
-
 ### Prerequisites
 * Go 1.22 or higher
-* Docker (optional, for running the service in a container)
 * Make (optional, for running commands)
 
-
-**Technology Stack:** Go 1.24.2. Standard Library, mockery for testing.
+**Technology Stack:** Go 1.24.2. Standard Library, google/uuid v1.6.0, joho/godotenv v1.5.1, stretchr/testify v1.10.0, Mockery for testing.
 
 ### Architecture
 
@@ -30,10 +26,10 @@ The core of the system revolves around obtaining product data. This indicates th
 
 ### 2. Requirements
 
-#### Non-Functional Requeriments
+#### Functional Requeriments
 * Details: Product details must be obtainable.
 
-#### Functional Requeriments
+#### Non-Functional Requeriments
 * The solution must be able to scale to **millions request per hour**.
 * The aapplication must be **optimized for reads**.
 
@@ -44,7 +40,6 @@ The core of the system revolves around obtaining product data. This indicates th
 curl -L -X GET 'http://localhost:8080/api/v1/details' \
 -H 'Details-ID: 550e8400-e29b-41d4-a716-446655440000'
 ```
-![details-endpoint.png](details-endpoint.png)
 
 
 ### 4. High-Level Architecture
@@ -86,7 +81,8 @@ Response Code Errors
 
 **Metrics (CPU, RAM, Requests per Second):** A metrics collection system, such as Prometheus, could be integrated to monitor the microservice's performance, including CPU usage, RAM, and requests per second.
 
-**IA Integration**: A MCP Server implementation can be use to 
+**IA Integration**: The use of MCP (Model Context Protocol) could be used to obtain statistics from the most requested details, based on that, generate recommendations.
 
 ### Author
 Lautaro Olmedo
+Linkedin: https://www.linkedin.com/in/lautaro-olmedo-648854224/

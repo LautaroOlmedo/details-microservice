@@ -23,7 +23,7 @@ func main() {
 	routes.SetUpReadRoutes(mux, dep)
 
 	server := &http.Server{
-		Addr:    ":8080",
+		Addr:    ":8080", // config.SERVER.PORT
 		Handler: mux,
 	}
 

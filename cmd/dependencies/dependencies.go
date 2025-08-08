@@ -11,6 +11,7 @@ type Dependencies struct {
 	ReaderHandler reader.ReaderHandler
 }
 
+// Injection of dependencies
 func InitDependencies(config *configuration.Configuration) Dependencies {
 	// repository layer
 	mapRepo := storage.NewMapRepository(config)

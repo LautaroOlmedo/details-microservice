@@ -3,11 +3,6 @@ package reader
 import (
 	"fmt"
 	"net/http"
-	"regexp"
-)
-
-var (
-	getOneRe = regexp.MustCompile(`^([a-fA-F0-9-]{36})$`)
 )
 
 func (handler *ReaderHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
