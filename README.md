@@ -36,9 +36,9 @@ This service assumes that the requested ID is shared between the product and its
 
 Get Details
 
-![Captura de pantalla 2025-08-08 a la(s) 10.07.56 a. m..png](../Captura%20de%20pantalla%202025-08-08%20a%20la%28s%29%2010.07.56%E2%80%AFa.%C2%A0m..png)
 
 
+![img.png](img.png)
 
 
 
