@@ -23,12 +23,12 @@ func main() {
 	routes.SetUpReadRoutes(mux, dep)
 
 	server := &http.Server{
-		Addr:    cfg.SERVER.PORT,
+		Addr:    ":8080",
 		Handler: mux,
 	}
 
 	// Start the server
-	log.Printf("Server starting on port %s", cfg.SERVER.PORT)
+	log.Printf("Server starting on port %s", "8080")
 	if err = server.ListenAndServe(); err != nil {
 		log.Fatal("Failed to start server: " + err.Error())
 	}

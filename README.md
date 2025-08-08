@@ -4,11 +4,17 @@
 
 **Version:** 1.0.0
 
+### How to Run
+
+### Prerequisites
+* Go 1.22 or higher
+* Docker (optional, for running the service in a container)
+* Make (optional, for running commands)
+
+
+
+
 **Technology Stack:** Go 1.24.2. Standard Library, mockery for testing.
-
-### Implemented Strategy
-
-This service assumes that the requested ID is shared between the product and its details. It uses CQRS (Command Query Responsibility Segregation) to separate read and write operations. The Repository Pattern is used to abstract data access logic, with in-memory Map and Slice data structures serving as the current data persistence layer. Use injection dependency to decouple the service implementation and the repository implementation
 
 ### Architecture
 
@@ -21,12 +27,20 @@ This microservice follows a Hexagonal Architecture (also known as Ports and Adap
 **Infrastructure Layer:** This layer holds the implementations of the output ports, such as the Details repository. This is also where you would add implementations for message queues, middlewares, and other external integrations.
 
 
+### Implemented Strategy
 
-### How to Run
+This service assumes that the requested ID is shared between the product and its details. It uses CQRS (Command Query Responsibility Segregation) to separate read and write operations. The Repository Pattern is used to abstract data access logic, with in-memory Map and Slice data structures serving as the current data persistence layer. Use injection dependency to decouple the service implementation and the repository implementation
 
-To start the server, navigate to the cmd directory and run the following command: **go run main.go**. This will start the server on port 8080.
 
-Once the service is running, you can make a GET request to the /api/v1/details/ endpoint. The request must include a details-ID header with the ID of the product whose details you want to retrieve.
+### Calling endpoints
+
+Get Details
+
+![Captura de pantalla 2025-08-08 a la(s) 10.07.56 a. m..png](../Captura%20de%20pantalla%202025-08-08%20a%20la%28s%29%2010.07.56%E2%80%AFa.%C2%A0m..png)
+
+
+
+
 
 ### API Endpoint Design
 
@@ -51,6 +65,7 @@ Details-ID: "550e8400-e29b-41d4-a716-446655440000"
 Response Code Errors
 ```
 200 Ok
+400 Bad Request
 404 Not Found
 500 Internal Server Error
 ```
