@@ -32,14 +32,15 @@ Once the service is running, you can make a GET request to the /api/v1/details/ 
 
 We assume that all incoming request contain a detail identifier in the Details-ID header.
 
- * Endpoint GET /api/v1/details/
+ * Endpoint ```GET /api/v1/details/```
  * Header 
-
- * Details-ID: "550e8400-e29b-41d4-a716-446655440000"
-
+```
+Details-ID: "550e8400-e29b-41d4-a716-446655440000"
+```
 * Success Response
 
-```{
+```
+{
   "ID": "550e8400-e29b-41d4-a716-446655440000",
   "Description": "Sample description",
   "CreatedAt": "2025-08-08T09:25:31.095446-03:00",
@@ -47,11 +48,12 @@ We assume that all incoming request contain a detail identifier in the Details-I
 }
 ```
 
-* Response Code Errors
+Response Code Errors
+```
 200 Ok
 404 Not Found
 500 Internal Server Error
-
+```
 
 
 **/ping**
