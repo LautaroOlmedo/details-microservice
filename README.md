@@ -34,7 +34,7 @@ The core of the system revolves around obtaining product data. This indicates th
 * Details: Product details must be obtainable.
 
 #### Functional Requeriments
-* The solution must be able to scale to **millions request per x hour**.
+* The solution must be able to scale to **millions request per hour**.
 * The aapplication must be **optimized for reads**.
 
 ### 3. Calling endpoints
