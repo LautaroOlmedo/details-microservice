@@ -42,6 +42,38 @@ curl -L -X GET 'http://localhost:8080/api/v1/details' \
 ![details-endpoint.png](details-endpoint.png)
 
 
+### High-Level Architecture
++-----------------------+
+|    External Clients   |
++-----------------------+
+          |
+          v
++-----------------------+
+|   HTTP Server (Mux)   |
++-----------------------+
+          |
+          v
++-----------------------+
+|   REST Handlers       |
++-----------------------+
+          |
+          v
++-----------------------+
+|   Application Layer   |
+|   (Services)          |
++-----------------------+
+          |
+          v
++-----------------------+
+|   Domain Layer        |
+|   (Entities, Logic)   |
++-----------------------+
+          |
+          v
++-----------------------+
+| Infrastructure Layer  |
+| (Repositories, etc.)  |
++-----------------------+
 
 ### API Endpoint Design
 
@@ -71,16 +103,15 @@ Response Code Errors
 500 Internal Server Error
 ```
 
-
-**/ping**
-
-Method: GET
-Description: A health check endpoint that returns "pong" to verify the microservice is running.
-
-### Future Enhancements
+### Next Iteration & Disccussion Points
 
 **Communication with the Products Service:** A validation could be implemented to check if the product exists. This could be done by making a call to the products microservice using a pattern like the Circuit Breaker.
 
 **Caching:** A cache could be implemented to temporarily store requested resources, reducing the number of database queries.
 
 **Metrics (CPU, RAM, Requests per Second):** A metrics collection system, such as Prometheus, could be integrated to monitor the microservice's performance, including CPU usage, RAM, and requests per second.
+
+**CQRS**: 
+
+### Author
+Lautaro Olmedo
