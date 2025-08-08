@@ -34,8 +34,11 @@ This service assumes that the requested ID is shared between the product and its
 
 ### Calling endpoints
 
-Get Details
-
+**Get Details by ID**
+```
+curl -L -X GET 'http://localhost:8080/api/v1/details' \
+-H 'Details-ID: 550e8400-e29b-41d4-a716-446655440000'
+```
 ![details-endpoint.png](details-endpoint.png)
 
 
