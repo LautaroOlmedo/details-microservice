@@ -36,9 +36,7 @@ This service assumes that the requested ID is shared between the product and its
 
 Get Details
 
-
-
-![img.png](img.png)
+![details-endpoint.png](details-endpoint.png)
 
 
 
