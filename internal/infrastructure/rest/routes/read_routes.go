@@ -2,7 +2,7 @@ package routes
 
 import (
 	"details-microservice/cmd/dependencies"
-	"details-microservice/internal/infrastrcuture/rest/handler/reader"
+	"details-microservice/internal/infrastructure/rest/handler/reader"
 	"net/http"
 )
 

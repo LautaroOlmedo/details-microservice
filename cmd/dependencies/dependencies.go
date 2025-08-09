@@ -2,8 +2,8 @@ package dependencies
 
 import (
 	"details-microservice/configuration"
-	"details-microservice/internal/infrastrcuture/repository/storage"
-	"details-microservice/internal/infrastrcuture/rest/handler/reader"
+	"details-microservice/internal/infrastructure/repository/storage"
+	"details-microservice/internal/infrastructure/rest/handler/reader"
 	"details-microservice/internal/service/details"
 )
 

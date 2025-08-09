@@ -3,7 +3,7 @@ package main
 import (
 	"details-microservice/cmd/dependencies"
 	"details-microservice/configuration"
-	"details-microservice/internal/infrastrcuture/rest/routes"
+	"details-microservice/internal/infrastructure/rest/routes"
 	"log"
 	"net/http"
 )
